@@ -1,0 +1,52 @@
+server:
+    port: 17080
+    context-path: /demo
+spring:
+  application:
+      name: demo
+  datasource:
+      initialSize: 20
+      maxActive: 50
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=UTF-8&createDatabaseIfNotExist=true&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: 12345678
+      testOnBorrow: true
+      validation-query: SELECT 1;
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:80
+        file-extension: yaml
+        enabled: true
+    profiles:
+      active: develop
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://127.0.0.1:8761/eureka/
+#    registry-fetch-interval-seconds: 3
+#  instance:
+#    prefer-ip-address: true
+#    leaseRenewalIntervalInSeconds: 3
+#    leaseExpirationDurationInSeconds: 10
+#liquibase:
+#    changeLog: "classpath:db/changelog/master.xml"
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    default-enum-type-handler: org.apache.ibatis.type.EnumTypeHandler
+pagehelper:
+  helperDialect: mysql
+info:
+    version: @project.version@
+    env: ${spring.profiles.active}
+management:
+    security:
+      enabled: false
+    health:
+      redis: #---禁用redis检查
+        defaults:   #---也可以禁用，不推荐
+          enabled: false

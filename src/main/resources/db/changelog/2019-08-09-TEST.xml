@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="1" author="test">
+        <sql>
+            CREATE TABLE if not exists `test` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `a` varchar(50) DEFAULT NULL COMMENT 'a',
+            `b` varchar(50) DEFAULT NULL COMMENT 'b',
+            `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (`id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </sql>
+    </changeSet>
+</databaseChangeLog>
